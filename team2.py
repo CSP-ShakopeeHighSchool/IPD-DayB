@@ -26,7 +26,20 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
+    if len(my_history)==0: 
+        return 'c'
+        b_count=0
+        for item in their_history[-10:]:
+            if 'b' in their_history:
+                b_count+=1
+        if b_count==3:
+            return 'b'
+            b_count=0
+            while b_count<3:
+                return 'c' 
+        if my_score+int(5000)<their_score:
+            return 'b'
+            
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
