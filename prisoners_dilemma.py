@@ -35,12 +35,12 @@ import os.path
     
 import example0, example1, example2, example3
 import example4, example5, example6, example7
-import team0
+import team1
 betray = example1
 collude = example0
 
 modules = [example0, example1, example2, example3, example4, example5, example6, example7,
-team0]
+team1]
 for module in modules:
     reload(module)
     print ('reloaded',module)
