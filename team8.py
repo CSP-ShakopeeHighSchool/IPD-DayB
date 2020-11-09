@@ -13,31 +13,31 @@ def move(my_history, their_history, my_score, their_score):
     if len(my_history) == 0 :
         return 'c'  
     else:
-            if 'b' not in their_history:
-                return 'c'
+        if 'b' not in their_history:
+            return 'c'
+        else :
+            if 'c' not in their_history:
+                return 'b'
             else :
-                if 'c' not in their_history:
-                    return 'b'
-                else :
-                    if len(my_history) >= 2 and their_history[-1] =='c' and their_history[-2]=='c' :
-                        return 'c'
-                    else:
-                        if len(my_history) >= 2 and their_history[-1] =='b' and their_history[-2]=='b' :
-                                return 'b'    
-                        else:     
-                            if len(my_history) >= 2 and their_history[-1] =='c' and their_history[-2]=='b':
-                                return 'b'
-                            else :
-                                if len(my_history) >= 2 and their_history[-1] =='b' and their_history[-2]=='c':
+                if len(my_history) >= 2 and their_history[-1] =='c' and their_history[-2]=='c' :
+                    return 'c'
+                else:
+                    if len(my_history) >= 2 and their_history[-1] =='b' and their_history[-2]=='b' :
+                            return 'b'    
+                    else:     
+                        if len(my_history) >= 2 and their_history[-1] =='c' and their_history[-2]=='b':
+                            return 'b'
+                        else :
+                            if len(my_history) >= 2 and their_history[-1] =='b' and their_history[-2]=='c':
+                                return 'b' 
+                            else:
+                                if len(my_history) >= 5 and their_history[-1] =='c' and their_history[-2]=='b' and their_history[-3] =='c' and their_history[-4]=='b' and their_history[-5] =='c':
                                     return 'b' 
-                                else:
-                                    if len(my_history) >= 5 and their_history[-1] =='c' and their_history[-2]=='b' and their_history[-3] =='c' and their_history[-4]=='b' and their_history[-5] =='c':
-                                        return 'b' 
-                                    else :
-                                        if 'b' not in their_history[-10:] or len(their_history)>100:
-                                            return 'b'
-                                        else:
-                                            return 'c'
+                                else :
+                                    if 'b' not in their_history[-10:] or len(their_history)>100:
+                                        return 'b'
+                                    else:
+                                        return 'c'
 
     
     
