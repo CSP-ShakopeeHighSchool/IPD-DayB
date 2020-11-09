@@ -8,8 +8,8 @@
 
 team_name = 'Jason Zhou' # Only 10 chars displayed.
 strategy_name = 'Simplicity'
-strategy_description = '''Looks at oppenent's last two moves then decides to 
-betray or collude based on what the opponent did'''
+strategy_description = '''Colludes at first then looks at oppenent's last 
+two moves then decides to betray or collude based on what the opponent did'''
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
