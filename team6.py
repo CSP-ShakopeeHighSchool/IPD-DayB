@@ -36,13 +36,13 @@ def move(my_history, their_history, my_score, their_score):
         if i == 'b':
             countb += 1
     countc = len(their_history) - countb
-    colludepercent = countc / countc + countb
-    betraypercent = countb / countc + countb
+    colludepercent = countc / (countc + countb) + .000000001
+    betraypercent = countb / (countc + countb) + .00000000001
     
     if colludepercent > 0.6:
         return 'b'
     
-    if 'c' in their_history[-4]:
+    if 'c' in their_history[-4:]:
         return 'b'
    
     if betraypercent > 0.75:
