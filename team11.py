@@ -7,8 +7,9 @@
 ####
 
 team_name = 'Jason Zhou' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'Simplicity'
+strategy_description = '''Looks at oppenent's last two moves then decides to 
+betray or collude based on what the opponent did'''
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -25,8 +26,15 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
+    if len(my_history)<=3:
+        return 'c'
+    else:
+        if 'b' not in their_history[-2]:
+            return 'c'
+        if 'c' not in their_history[-2]:
+            return 'b'
+            
+
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
@@ -53,7 +61,7 @@ if __name__ == '__main__':
               my_score=0,
               their_score=0,
               result='b'):
-         print 'Test passed'
+         print ('Test passed')
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
               their_history='ccc', 
