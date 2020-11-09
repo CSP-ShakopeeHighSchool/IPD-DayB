@@ -10,8 +10,8 @@
 
 
 team_name = 'Nick' 
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'collude unless i am forced to betray'
+strategy_description = 'with stuff'
     
 import random
     
