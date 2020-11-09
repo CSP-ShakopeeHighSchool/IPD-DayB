@@ -7,7 +7,7 @@
 ####
 
 team_name = 'Carter team' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
+strategy_name = "Pattern Finder"
 strategy_description = 'How does this strategy decide?'
     
 def move(my_history, their_history, my_score, their_score):
@@ -43,7 +43,7 @@ def move(my_history, their_history, my_score, their_score):
         return 'c'
     elif 'b' in their_history[-3]:
         return 'b'
-    elif ratio1 == ratio2:
+    elif ratio1 == ratio2 and ratio1 != 0:
         return 'b'
     else:
         return 'c'
