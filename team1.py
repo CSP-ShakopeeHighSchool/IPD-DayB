@@ -7,8 +7,8 @@
 ####
 
 team_name = "Ben = GOAT" # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'SUPERCOOLStrat'
+strategy_description = 'Colludes at first and if their last move was collude repeat my last move if they betray do the opposite of previous move'
 
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
