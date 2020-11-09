@@ -29,19 +29,26 @@ def move(my_history, their_history, my_score, their_score):
     if len(my_history)==0: 
         return 'c'
         b_count=0
+        if ['c']*25 in their_history:   
+            return 'b'
         for item in their_history[-10:]:
-            if 'b' in their_history:
+            while 'b,b,b' in their_history[-3:]:
+                return 'b'
+            if item=='b':
                 b_count+=1
         if b_count==3:
             return 'b'
             b_count=0
             while b_count<3:
                 return 'c' 
-        if my_score+int(5000)<their_score:
+        if 'b' in my_history[-7:]:
+            return 'c'
+        if my_score+int(3000)<their_score:
             return 'b'
+        
             
-
-    
+            
+            
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
@@ -66,7 +73,7 @@ if __name__ == '__main__':
               my_score=0,
               their_score=0,
               result='b'):
-         print 'Test passed'
+         print ('Test passed')
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
               their_history='ccc', 
