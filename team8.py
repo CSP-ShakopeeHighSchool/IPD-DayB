@@ -1,4 +1,4 @@
-\####
+####
 # Each team's file must define four tokens:
 #     team_name: a string
 #     strategy_name: a string
@@ -6,17 +6,42 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'Ryan' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
-    
+team_name = 'Ryan W.' # Only 10 chars displayed.
+strategy_name = 'Weakness Grabber'
+strategy_description = 'This decides whether to betray or collude based on the pattern that their program shows and the parrerns in the test programs.' 
 def move(my_history, their_history, my_score, their_score):
-    ''' Arguments accepted: my_history, their_history are strings.
-    my_score, their_score are ints.
+    if len(my_history) == 0 :
+        return 'c'  
+    else:
+            if 'b' not in their_history:
+                return 'c'
+            else :
+                if 'c' not in their_history:
+                    return 'b'
+                else :
+                    if len(my_history) >= 2 and their_history[-1] =='c' and their_history[-2]=='c' :
+                        return 'c'
+                    else:
+                        if len(my_history) >= 2 and their_history[-1] =='b' and their_history[-2]=='b' :
+                                return 'b'    
+                        else:     
+                            if len(my_history) >= 2 and their_history[-1] =='c' and their_history[-2]=='b':
+                                return 'b'
+                            else :
+                                if len(my_history) >= 2 and their_history[-1] =='b' and their_history[-2]=='c':
+                                    return 'b' 
+                                else:
+                                    if len(my_history) >= 5 and their_history[-1] =='c' and their_history[-2]=='b' and their_history[-3] =='c' and their_history[-4]=='b' and their_history[-5] =='c':
+                                        return 'b' 
+                                    else :
+                                        if 'b' not in their_history[-10:] or len(their_history)>100:
+                                            return 'b'
+                                        else:
+                                            return 'c'
+
     
-    Make my move.
-    Returns 'c' or 'b'. 
-    '''
+    
+    
 
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
@@ -26,7 +51,7 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
+   
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
@@ -53,7 +78,7 @@ if __name__ == '__main__':
               my_score=0,
               their_score=0,
               result='b'):
-         print 'Test passed'
+         print ('Test passed')
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
               their_history='ccc', 
