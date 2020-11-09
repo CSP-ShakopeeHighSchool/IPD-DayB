@@ -6,6 +6,7 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
+team_name = 'Carter team' # Only 10 chars displayed.
 strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
     
@@ -24,9 +25,29 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
-
+    cs = 0
+    bs = 0
+    ratio1 = -1
+    ratio2 = -1
+    for i in their_history:
+        if i == 'c':
+            cs += 1
+        if i == 'b':
+            bs += 1
+    if len(my_history) == 4:
+        if 'c' in their_history:
+            ratio1 = bs/cs
+    if 'c' in their_history:
+        ratio2 = bs/cs
+    if len(my_history) <3:
+        return 'c'
+    elif 'b' in their_history[-3]:
+        return 'b'
+    elif ratio1 == ratio2:
+        return 'b'
+    else:
+        return 'c'
+        
     
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
@@ -52,7 +73,7 @@ if __name__ == '__main__':
               my_score=0,
               their_score=0,
               result='b'):
-         print 'Test passed'
+         print ('Test passed')
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
               their_history='ccc', 
