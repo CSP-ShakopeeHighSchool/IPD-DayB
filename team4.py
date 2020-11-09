@@ -1,3 +1,4 @@
+
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -7,17 +8,8 @@
 ####
 
 team_name = 'Pa ALieu' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
-    
-def move(my_history, their_history, my_score, their_score):
-    ''' Arguments accepted: my_history, their_history are strings.
-    my_score, their_score are ints.
-    
-    Make my move.
-    Returns 'c' or 'b'. 
-    '''
-
+strategy_name = 'Safe betrayal'
+strategy_description = 'Betray the first 3 turns then only betray if they havent betrayed in their last five turns. also collude if the score is relatively high'
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
@@ -26,9 +18,25 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
 
+def move(my_history, their_history, my_score, their_score):
+    ''' Arguments accepted: my_history, their_history are strings.
+    my_score, their_score are ints.
     
+    Make my move.
+    Returns 'c' or 'b'.
+    '''
+    if len(my_history) < 5:
+        return 'b'
+    for i in range(1,6):
+        if their_history[-i] == 'b':
+            return 'c'
+    if my_score > -2000:
+        return  'c'
+    
+    
+        
+        
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
@@ -44,12 +52,10 @@ def test_move(my_history, their_history, my_score, their_score, result):
             ") returned " + "'" + real_result + "'" +
             " and should have returned '" + result + "'")
         return False
-
-if __name__ == '__main__':
      
     # Test 1: Betray on first move.
-    if test_move(my_history='',
-              their_history='', 
+    if test_move(my_history='0',
+              their_history='0', 
               my_score=0,
               their_score=0,
               result='b'):
@@ -65,4 +71,4 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='b')           
