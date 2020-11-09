@@ -9,7 +9,7 @@
 
 
 
-team_name = 'Nick' # Only 10 chars displayed.
+team_name = 'Nick' 
 strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
     
@@ -17,7 +17,9 @@ import random
     
 def move(my_history, their_history, my_score, their_score):
    
-    if 'b' in their_history[-20:]: 
+     if len(my_history)==0: 
+        return 'c'if 'b' in their_history[-20:]
+    else:    
         return random.choice(['', ' ', 4]) 
     else:
         if random.random()<0.20: 
