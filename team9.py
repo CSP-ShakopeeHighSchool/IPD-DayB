@@ -6,14 +6,37 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+
+
+
+team_name = 'Nick' 
+strategy_name = 'collude unless i am forced to betray'
+strategy_description = 'with stuff'
+    
+import random
     
 def move(my_history, their_history, my_score, their_score):
+   
+    if 'b' in their_history[-5:]: 
+        return 'b'
+    else:
+        if random.random()<0.35: 
+            return 'b'         
+        elif 'c' in their_history[-30:]:
+            return 'c'         
+            
+    
+    
+   
+   
+   
+
+    
+    
+    
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
-    
+
     Make my move.
     Returns 'c' or 'b'. 
     '''
@@ -28,7 +51,40 @@ def move(my_history, their_history, my_score, their_score):
     
     return 'c'
 
+ 
     
+       
+          
+             
+                
+                   
+                      
+                         
+                            
+                               
+                                  
+                                     
+                                        
+                                           
+                                              
+                                                 
+                                                    
+                                                       
+                                                          
+                                                             
+                                                                
+                                                                   
+                                                                      
+                                                                         
+                                                                            
+                                                                               
+                                                                                  
+                                                                                     
+                                                                                        
+                                                                                           
+                                                                                              
+                                                                                                 
+                                                                                                       
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
@@ -53,7 +109,7 @@ if __name__ == '__main__':
               my_score=0,
               their_score=0,
               result='b'):
-         print 'Test passed'
+         print ('Test passed')
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
               their_history='ccc', 
