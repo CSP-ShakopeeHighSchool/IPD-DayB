@@ -25,26 +25,25 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
+    b_count=0
     if len(my_history)==0: 
         return 'c'
+    if ('c')*25 in their_history:   
+        return 'b'
+    for item in their_history[-10:]:
+        while 'b,b,b' in their_history[-3:]:
+            return 'b'
+        if item=='b':
+            b_count+=1
+    if b_count==3:
+        return 'b'
         b_count=0
-        if ['c']*25 in their_history:   
-            return 'b'
-        for item in their_history[-10:]:
-            while 'b,b,b' in their_history[-3:]:
-                return 'b'
-            if item=='b':
-                b_count+=1
-        if b_count==3:
-            return 'b'
-            b_count=0
-            while b_count<3:
-                return 'c' 
-        if 'b' in my_history[-7:]:
-            return 'c'
-        if my_score+int(3000)<their_score:
-            return 'b'
+        while b_count<3:
+            return 'c' 
+    if 'b' in my_history[-7:]:
+        return 'c'
+    if my_score+int(3000)<their_score:
+        return 'b'
         
             
             
