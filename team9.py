@@ -7,8 +7,7 @@
 ####
 
 
-
-
+ 
 team_name = 'Nick' 
 strategy_name = 'collude unless i am forced to betray'
 strategy_description = 'with stuff'
@@ -20,9 +19,7 @@ def move(my_history, their_history, my_score, their_score):
     if 'b' in their_history[-5:]: 
         return 'b'
     else:
-        if random.random()<0.35: 
-            return 'b'         
-        elif 'c' in their_history[-30:]:
+        if 'c' in their_history[-30:]:
             return 'c'         
             
     
