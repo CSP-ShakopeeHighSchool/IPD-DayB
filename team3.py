@@ -29,6 +29,7 @@ def move(my_history, their_history, my_score, their_score):
     bs = 0
     ratio1 = -1
     ratio2 = -1
+    erv = 0
     for i in their_history:
         if i == 'c':
             cs += 1
@@ -41,14 +42,16 @@ def move(my_history, their_history, my_score, their_score):
         ratio2 = bs/cs
     if len(my_history) <3:
         return 'c'
-    elif 'b' in their_history[-3]:
+    elif 'b' in their_history[-3:]:
         return 'b'
     elif ratio1 == ratio2 and ratio1 != 0:
         return 'b'
+    elif erv >= 10:
+        return 'b'
     else:
-        return 'c'
-        
-    
+        return 'c'    
+    if ratio1 == ratio2 and ratio1 != 0:
+        erv += 1
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
