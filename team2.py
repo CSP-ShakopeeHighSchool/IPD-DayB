@@ -28,7 +28,7 @@ def move(my_history, their_history, my_score, their_score):
     b_count=0
     if len(my_history)==0: 
         return 'c'
-    if ('c')*25 in their_history:   
+    if ('c') * 15 in their_history:   
         return 'b'
     for item in their_history[-10:]:
         while 'b,b,b' in their_history[-3:]:
