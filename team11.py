@@ -7,7 +7,7 @@
 ####
 
 team_name = 'Jason Zhou' # Only 10 chars displayed.
-strategy_name = 'Your Past'
+strategy_name = 'Past Moves'
 strategy_description = '''Colludes at first then looks at oppenent's last two 
 moves then decides to betray or collude based on what the opponent did'''
     
