@@ -9,7 +9,7 @@
 
 team_name = 'Pa ALieu' # Only 10 chars displayed.
 strategy_name = 'Safe betrayal'
-strategy_description = 'Betray the first 3 turns then only betray if they havent betrayed in their last five turns. also collude if the score is relatively high'
+strategy_description = 'Betray the first 3 turns then  betray if they have betrayed in their last five turns. also collude if the score is relatively high'
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
@@ -30,10 +30,9 @@ def move(my_history, their_history, my_score, their_score):
         return 'b'
     for i in range(1,6):
         if their_history[-i] == 'b':
-            return 'c'
-    if my_score > -2000:
-        return  'c'
-    
+            return 'b'
+    if my_score > 100:
+        return 'c'
     
         
         
