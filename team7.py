@@ -7,8 +7,8 @@
 ####
 
 team_name = 'Christian' # Only 10 chars displayed.
-strategy_name = 'Collude Until Round 50 and betray the same amount of times opponent did'
-strategy_description = 'The program colludes until round 50, and if it detects a betrayal in the last turn, then it will betray back.'
+strategy_name = 'Collude and betray the same amount of times opponent did'
+strategy_description = 'The program colludes all the time, and if it detects a betrayal in the last turn, then it will betray back.'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -19,10 +19,8 @@ def move(my_history, their_history, my_score, their_score):
     '''
     if len(my_history)==0: 
         return 'c'
-    elif len(their_history)>50:
-        return 'b'
     else:
-        for i in their_history:
+        for i in their_history[-1]:
             if i == 'b':
                 return 'b'
             else:
