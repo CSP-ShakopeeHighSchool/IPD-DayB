@@ -195,6 +195,7 @@ def make_reports(modules, scores, moves):
     return section0, section1, section2, section3
         
 def make_section0(modules, scores):
+    
     '''
     Produce the following string:
     ----------------------------------------------------------------------------
@@ -205,6 +206,9 @@ def make_section0(modules, scores):
     Player 1 (P1): Team name 1, Strategy name 1, 
          Strategy 1 description
     ''' 
+    for j in range(len(modules)):
+        for i in range(len(scores)):
+            scores[i][j]  = round(scores[i][j], 2)
     section0 = '-'*80+'\n'
     section0 += 'Section 0 - Line up\n'
     section0 += '-'*80+'\n'
@@ -235,6 +239,9 @@ def make_section1(modules, scores):
     TOTAL  :  -500   100
     '''
     # First line
+    for j in range(len(modules)):
+        for i in range(len(scores)):
+            scores[i][j]  = round(scores[i][j], 2)
     section1 = '-'*80+'\nSection 1 - Player vs. Player\n'+'-'*80+'\n'
     section1 += 'Each column shows pts/round earned against each other player:\n'
     # Second line
@@ -246,16 +253,19 @@ def make_section1(modules, scores):
     for index in range(len(modules)):
         section1 += 'vs. P' + str(index) + ' :'
         for i in range(len(modules)):
-            section1 += '{:>7}'.format(scores[i][index])
+            section1 += '| {:>7} |'.format(scores[i][index])
         section1 += '\n'
 
     # Last line
     section1 += 'TOTAL  :'
     for index in range(len(modules)):
-        section1 += '{:>7}'.format(sum(scores[index]))     
+        section1 += '| {:>7} |'.format(round(sum(scores[index]), 2))     
     return section1+'\n'
     
 def make_section2(modules, scores):
+    for j in range(len(modules)):
+        for i in range(len(scores)):
+            scores[i][j]  = round(scores[i][j], 2)
     '''
     ----------------------------------------------------------------------------
     Section 2 - Leaderboard
@@ -274,9 +284,9 @@ def make_section2(modules, scores):
     for index in range(len(modules)):
         section2_list.append((modules[index].team_name,
                               'P'+str(index),
-                              str(sum(scores[index])/len(modules)),
+                              str(round(sum(scores[index])/len(modules), 2)),
                               str(modules[index].strategy_name)))
-    section2_list.sort(key=lambda x: float(x[2]), reverse=True)
+    section2_list.sort(key=lambda x: round(float(x[2]), 2), reverse=True)
     
     # Generate one string per team
     # Rockettes (P1):  -500 points with Backstabber
@@ -286,6 +296,9 @@ def make_section2(modules, scores):
     return section2 
     
 def make_section3(modules, moves, scores, index):
+    for j in range(len(modules)):
+        for i in range(len(scores)):
+            scores[i][j]  = round(scores[i][j], 2)
     '''Return a string with information for the player at index, like:
     ----------------------------------------------------------------------------
     Section 3 - Game Data for Team Colloid c=-500 b=-250 C=0 B=+100
