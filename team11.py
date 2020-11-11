@@ -7,9 +7,9 @@
 ####
 
 team_name = 'Jason Zhou' # Only 10 chars displayed.
-strategy_name = 'Simplicity'
-strategy_description = '''Looks at oppenent's last two moves then decides to 
-betray or collude based on what the opponent did'''
+strategy_name = 'Your Past'
+strategy_description = '''Colludes at first then looks at oppenent's last two 
+moves then decides to betray or collude based on what the opponent did'''
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -29,11 +29,17 @@ def move(my_history, their_history, my_score, their_score):
     if len(my_history)<=3:
         return 'c'
     else:
-        if 'b' not in their_history[-2]:
-            return 'c'
-        if 'c' not in their_history[-2]:
+        if 'b' in their_history[-1] and 'c' in their_history[-2]:
             return 'b'
-            
+        if 'c' in their_history[-1] and 'b' in their_history[-2]:
+            return 'b'
+        else:
+            if 'b' not in their_history[-2:]:
+                return 'c'
+            if 'c' not in their_history[-2:]:
+                return 'b'
+        
+
 
 
     
