@@ -7,7 +7,7 @@
 ####
 
 team_name = 'Alex Yin' # Only 10 chars displayed.
-strategy_name = 'Collude first, then betray every 10 rounds, unless opponent betrayed previous'
+strategy_name = 'No one can know my strategy, its too good'
 strategy_description = 'If the opponent betrayed previous, I will also betray this round'
     
 def move(my_history, their_history, my_score, their_score):
@@ -18,13 +18,19 @@ def move(my_history, their_history, my_score, their_score):
     Returns 'c' or 'b'. 
     '''
     if len(my_history)==0: # It's the first round; collude.
-        return 'c'
+        return 'b'
     elif my_history[-1]=='c' and their_history[-1]=='b':
         return 'b'
-    if len(my_history)%10 == 0:
+    elif my_history[-1]=='c' and their_history[-1]=='c':
         return 'b'
-    else:
+    elif my_history[-1]=='b' and their_history[-1]=='b':
+        return 'b'
+    elif my_history[-1]=='b' and their_history[-1]=='c':
+        return 'b'
+    if len(my_history)%10 == 0:
         return 'c'
+    else:
+        return 'b'
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
