@@ -1,4 +1,4 @@
-####
+###
 # Each team's file must define four tokens:
 #     team_name: a string
 #     strategy_name: a string
@@ -25,31 +25,32 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    if len(my_history) == 0:
-        return 'b'
-    if len(my_history) == 1:
-        return 'b'
-    if len(my_history) == 2:
-        return 'b'
+    if len(my_history) < 2:
+        return 'c'
     countb = 0
     for i in their_history:
         if i == 'b':
             countb += 1
     countc = len(their_history) - countb
-    colludepercent = countc / (countc + countb) + .000000001
-    betraypercent = countb / (countc + countb) + .00000000001
-    
-    if colludepercent > 0.6:
+    colludepercent = countc / (countc + countb)
+    betraypercent = countb / (countc + countb)
+    if 'c' in their_history[-25:]:
+        return 'c'
+    if colludepercent > 0.625:
         return 'b'
     
-    if 'c' in their_history[-4:]:
+    if 'c' in their_history[-10:]:
         return 'b'
    
-    if betraypercent > 0.75:
-        return 'c'
-    else:
+    if betraypercent > 0.30:
         return 'b'
-        
+    if (betraypercent / colludepercent) < 1:
+        return 'b'
+    if colludepercent == 1:
+        return 'c'
+
+    if their_score <= 0:
+        return 'b'
         
         
     
